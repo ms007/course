@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>02_Git</title>
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700|Merriweather:900|Oxygen+Mono|Oxygen:400,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/reveal.css" />
+    <link rel="stylesheet" href="css/theme/default.css" />
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/monokai.css" />
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match(/print-pdf/gi)
+        ? 'css/print/pdf.css'
+        : 'css/print/paper.css';
+      document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+    <script src="http://localhost:35729/livereload.js"></script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h1>git - the simple guide</h1>
+        </section>
+
+        <section data-background-color="#fff">
+          <section><h2>Was ist git?</h2></section>
+          <section>
+            <img width="420" data-src="assets\whatisgit.gif" />
+          </section>
+          <section>
+            <h2>Versionsverwaltung</h2>
+            <img width="420" data-src="assets\gitbasic.png" />
+          </section>
+          <section>
+            <img data-src="assets\allcommands.png" />
+          </section>
+        </section>
+
+        <section data-background-color="#fff">
+          <section>
+            <h2>First things first</h2>
+            <div>Git personalisieren</div>
+            <pre style="background-color: #fff">git config --global user.name "Your Name"</pre>
+            <pre style="background-color: #fff">git config --global user.email you@example.com</pre>
+          </section>
+        </section>
+
+        <section data-background-color="#06406c">
+          <section>
+            <h2>Neues Repository erstellen</h2>
+            <div>erstelle ein neues Verzeichnis, öffne es und führe</div>
+            <pre>git init</pre>
+            <div style="margin-top: 10px">aus, um ein neues git-Repository anzulegen.</div>
+          </section>
+          <section>
+            <h2>Ein Repository auschecken</h2>
+            <div>Erstelle eine Arbeitskopie, indem du folgenden Befehl ausführst:</div>
+            <pre>git clone /pfad/zum/repository</pre>
+          </section>
+        </section>
+
+        <section data-background-color="#4c0d09">
+          <section>
+            <h2 style="color: #d3b2af">Workflow</h2>
+            <p style="color: #d3b2af; line-height: 50px;">
+              Dein lokales Repository besteht aus drei "Instanzen", die von git verwaltet werden.
+              Die erste ist deine <code class="white">Arbeitskopie</code>, welche die echten Dateien
+              enthält. Die zweite ist der <code class="white">Index</code>, welcher als
+              Zwischenstufe agiert und zu guter Letzt noch der <code class="white">HEAD</code>, der
+              auf deinen letzten Commit zeigt.
+            </p>
+            <img class="plain" width="700" data-src="assets\trees.png" />
+          </section>
+          <section>
+            <img class="plain" width="700" data-src="assets\areas.png" />
+          </section>
+        </section>
+
+        <section data-background-color="#cc4037">
+          <section>
+            <h2 style="color: #4c0d09">add & commit</h2>
+            <p style="color: #4c0d09; line-height: 50px;">
+              Du kannst Änderungen vorschlagen (zum <b>Index</b> hinzufügen) mit<br />
+              <code>git add &lt;dateiname&gt;</code><br />
+              <code>git add *</code><br />
+              Das ist der erste Schritt im git workflow, du bestätigst deine Änderungen mit:<br />
+              <code>git commit -m "Commit-Nachricht"</code><br />
+              Jetzt befindet sich die Änderung im <b>HEAD</b>, aber noch nicht im entfernten
+              Repository.
+            </p>
+          </section>
+        </section>
+
+        <section data-background-color="#ffc19f">
+          <section>
+            <h2 style="color: #cc4037">Änderungen hochladen</h2>
+            <p style="line-height: 50px;">
+              Die Änderungen sind jetzt im <b>HEAD</b> deines lokalen Repositories. Um die
+              Änderungen an dein entferntes Repository zu senden, führe:<br />
+              <code>git push origin master</code><br />
+              aus. Du kannst <i>master</i> auch mit einem beliebigen anderen Branch ersetzen, mehr
+              über Branches erfährst du später.
+            </p>
+          </section>
+          <section>
+            <h2 style="color: #cc4037">Änderungen hochladen</h2>
+            <p style="line-height: 50px;">
+              Wenn du dein lokales Repository nicht von einem entfernten geklont hast und du diese
+              aber mit einem anderen Repository verbinden möchtest, musst du dieses mit <br />
+              <code>git remote add origin &lt;server&gt;</code><br />
+              hinzufügen. Jetzt bist du bereit, deine Änderungen hochzuladen<br />
+            </p>
+          </section>
+        </section>
+
+        <section data-background-color="#000">
+          <section>
+            <h2>Branches</h2>
+            Branches werden benutzt, um verschiedene Funktionen isoliert voneinander zu entwickeln.
+            Der master-Branch ist der "Standard"-Branch, wenn du ein neues Repository erstellst. Du
+            solltest aber für die Entwicklung andere Branches verwenden und diese dann in den
+            Master-Branch zusammenführen (mergen). Auch das lernst du später.
+            <img class="plain" width="700" data-src="assets\branches.png" />
+          </section>
+          <section>
+            <p style="line-height: 50px;">
+              Erstelle einen neuen Branch mit dem Namen "feature_x" und wechsle zu diesem:<br />
+              <code class="white">git checkout -b feature_x</code><br />
+              Um zum Master zurück zu wechseln:<br />
+              <code class="white">git checkout master</code><br />
+              Und um den eben erstellten Branch wieder zu löschen:<br />
+              <code class="white">git branch -d feature_x</code><br />
+              Ein Branch ist <i>nicht für andere verfügbar</i>, bis du diesen in dein entferntes
+              Repository hochlädst:<br />
+              <code class="white">git push origin &lt;branch&gt;</code>
+            </p>
+          </section>
+        </section>
+      </div>
+    </div>
+
+    <script src="js/reveal.js"></script>
+
+    <script>
+      // More info about config & dependencies:
+      // - https://github.com/hakimel/reveal.js#configuration
+      // - https://github.com/hakimel/reveal.js#dependencies
+      Reveal.initialize({
+        hash: true,
+        dependencies: [
+          { src: 'plugin/markdown/marked.js' },
+          { src: 'plugin/markdown/markdown.js' },
+          { src: 'plugin/highlight/highlight.js' },
+          { src: 'plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+  </body>
+</html>
