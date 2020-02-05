@@ -122,8 +122,8 @@
           <section>
             <h2 style="color: #cc4037">Änderungen hochladen</h2>
             <p style="line-height: 50px;">
-              Wenn du dein lokales Repository nicht von einem entfernten geklont hast und du diese
-              aber mit einem anderen Repository verbinden möchtest, musst du dieses mit <br />
+              Wenn du dein lokales Repository nicht von einem entfernten geklont hast oder mit einem
+              anderen Repository verbinden möchtest, musst du dieses mit <br />
               <code>git remote add origin &lt;server&gt;</code><br />
               hinzufügen. Jetzt bist du bereit, deine Änderungen hochzuladen<br />
             </p>
@@ -141,17 +141,110 @@
           </section>
           <section>
             <p style="line-height: 50px;">
-              Erstelle einen neuen Branch mit dem Namen "feature_x" und wechsle zu diesem:<br />
-              <code class="white">git checkout -b feature_x</code><br />
+              Erstelle einen neuen Branch mit dem Namen "feature/xyz" und wechsle zu diesem:<br />
+              <code class="white">git checkout -b feature/xyz</code><br />
               Um zum Master zurück zu wechseln:<br />
               <code class="white">git checkout master</code><br />
               Und um den eben erstellten Branch wieder zu löschen:<br />
-              <code class="white">git branch -d feature_x</code><br />
+              <code class="white">git branch -d feature/xyz</code><br />
               Ein Branch ist <i>nicht für andere verfügbar</i>, bis du diesen in dein entferntes
               Repository hochlädst:<br />
               <code class="white">git push origin &lt;branch&gt;</code>
             </p>
           </section>
+        </section>
+
+        <section data-background-color="#348fd4">
+          <section>
+            <h2 style="color: #06406c;">Tagging</h2>
+            <p style="line-height: 50px">
+              Es wird empfohlen, für Software Releasestags zu verwenden. Du kannst einen neuen Tag
+              namens 1.0.0 mit folgendem Befehl erstellen:<br />
+              <code>git tag 1.0.0 1b2e1d63ff</code><br />
+              oder vom aktuellen Commit aus <br />
+              <code>git tag 1.0.0</code>
+            </p>
+          </section>
+          <section>
+            <h2 style="color: #06406c;">Tags synchronisieren</h2>
+            <p style="line-height: 50px">
+              Tags werden nicht automatisch zu einem Remote transferiert. Das erreicht man mit
+              folgenden Befehlen:<br />
+              Einzelner Tag:<br />
+              <code>git push origin &lt;tagname&gt;</code><br />
+              Alle Tags <br />
+              <code>git push origin --tags</code>
+            </p>
+          </section>
+        </section>
+
+        <section data-background-color="#fff">
+          <section>
+            <h2 style="color: #666">Update & Merge</h2>
+            <p style="line-height: 50px;">
+              Um dein lokales Repository mit den neuesten Änderungen zu aktualisieren, verwende:<br />
+              <code>git pull</code><br />
+              in deiner Arbeitskopie, um die Änderungen erst herunterzuladen (fetch) und dann mit
+              deinem Stand zusammenzuführen (merge).
+            </p>
+          </section>
+          <section>
+            <p style="line-height: 50px;">
+              Wenn du einen anderen Branch mit deinem aktuellen (z.B. master) zusammenführen willst,
+              benutze:<br />
+              <code>git merge &lt;branch&gt;</code><br />
+              In beiden Fällen versucht git die Änderungen automatisch zusammenzuführen.
+            </p>
+          </section>
+          <section>
+            <h2 style="color: #666">Konflikte</h2>
+            <p style="line-height: 50px;">
+              Unglücklicherweise ist die automatische Zusammenführung nicht immer möglich und endet
+              in Konflikten. Du bist verantwortlich, diese Konflikte durch manuelles Editieren der
+              betroffenen Dateien zu lösen. Bist du damit fertig, musst du das git mit folgendem
+              Befehl mitteilen:<br />
+              <code>git add &lt;dateiname&gt;</code><br />
+            </p>
+          </section>
+        </section>
+
+        <section data-background-color="#fff8c9">
+          <section>
+            <h2 style="color: #2d2700">Änderungen rückgängig machen</h2>
+            <p style="line-height: 50px; color: #463d02">
+              Falls du mal etwas falsch machst (was natürlich nie passiert ;) kannst du die lokalen
+              Änderungen mit:<br />
+              <code>git checkout -- &lt;dateiname&gt;</code><br />
+              auf den letzten Stand im HEAD zurücksetzen. Änderungen, die du bereits zum Index
+              hinzugefügt hast, bleiben bestehen.
+            </p>
+          </section>
+          <section>
+            <h2 style="color: #2d2700">Änderungen rückgängig machen</h2>
+            <p style="line-height: 50px; color: #463d02">
+              Wenn du aber deine lokalen Änderungen komplett entfernen möchtest, kannst du mit dem
+              folgenden Befehl den aktuellen Stand des Head zurückbringen:<br />
+              <code>git reset --hard head</code><br />
+            </p>
+          </section>
+        </section>
+
+        <section data-background-color="#ffc19f">
+          <h2 style="color: #cc4037">Links & Tools</h2>
+          <ul style="color: #7d1f19">
+            <li>
+              <a style="color: #7d1f19" href="http://mac.github.com/"
+                >GitHub for Mac (OS X, kostenlos)</a
+              >
+            </li>
+            <li>
+              <a
+                style="color: #7d1f19;"
+                href="https://github.github.com/training-kit/downloads/de/github-git-cheat-sheet/"
+                >git Cheat sheet (Spickzettel)</a
+              >
+            </li>
+          </ul>
         </section>
       </div>
     </div>
