@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>Backend</title>
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700|Merriweather:900|Oxygen+Mono|Oxygen:400,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/reveal.css" />
+    <link rel="stylesheet" href="css/theme/default.css" />
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/monokai.css" />
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match(/print-pdf/gi)
+        ? 'css/print/pdf.css'
+        : 'css/print/paper.css';
+      document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+    <script src="http://localhost:35729/livereload.js"></script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h1>Backend</h1>
+        </section>
+
+        <section data-background-color="#f8f6f9">
+          <section>
+            <img data-src="assets\frontend-and-backend-diagram.png" />
+          </section>
+        </section>
+
+        <section data-background-color="#fff">
+          <section>
+            <h2>Backend Frameworks</h2>
+          </section>
+          <section>
+            <img data-src="assets\netcore.png" />
+          </section>
+          <section>
+            <img data-src="assets\springboot.png" />
+          </section>
+          <section>
+            <img data-src="assets\express.png" />
+          </section>
+          <section>
+            <h2>Weitere Frameworks</h2>
+            <ul>
+              <li>Laravel (PHP)</li>
+              <li>Django (Phyton)</li>
+              <li>Revel (Go)</li>
+              <li>Ruby on Rails (Ruby)</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Selektionskriterien</h2>
+            <ul>
+              <li>Lernkurve</li>
+              <li>Community</li>
+              <li>Libraries</li>
+              <li>Security</li>
+              <li>Skalierbarkeit</li>
+            </ul>
+          </section>
+        </section>
+
+        <section data-background-color="#fff">
+          <section>
+            <h2>Zwei unterschiedliche Arten von Web Applikationen</h2>
+          </section>
+          <section>
+            <h3>Single Page / Multiple Page</h3>
+            <img width="700" data-src="assets\spa_vs_mpa.png" />
+          </section>
+          <section>
+            <h3>Single Page Application</h3>
+            <img data-src="assets\spa-lifecycle.png" />
+          </section>
+          <section>
+            <h3>Multiple Page Application</h3>
+            <img data-src="assets\mpa-lifecycle.png" />
+          </section>
+          <section data-background-color="#06406c">
+            <h1 style="color: #fff">Demo</h1>
+          </section>
+          <section data-background-color="#a0406c">
+            <h1 style="color: #fff">Installation</h1>
+          </section>
+        </section>
+
+        <section data-background-color="#fff">
+          <section>
+            <h2>Neues Web API Projekt erstellen</h2>
+            <br />
+            <code>md Test</code><br /><br />
+            <code>cd Test</code><br /><br />
+            <code>dotnet new webapi -n &lt;Name der App&gt;</code><br />
+            <a
+              style="font-size: 14px"
+              target="_blank"
+              href="https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-new"
+              >dotnet new</a
+            >
+          </section>
+          <section>
+            <h2>initiale Datei Struktur</h2>
+            <br />
+            <img class="plain" data-src="assets\Structure.png" />
+          </section>
+          <section>
+            <h2>Debug — Run — Publish</h2>
+            <br />
+            Für's Debugging VSCode benutzen<br /><br />
+            <code>dotnet build</code><br /><br />
+            <code>dotnet run</code><br /><br />
+            <code>dotnet publish -c Release –o</code><br />
+            <a
+              style="font-size: 14px"
+              target="_blank"
+              href="https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet"
+              >dotnet Befehle</a
+            >
+          </section>
+          <section data-background-color="#06406c">
+            <h1 style="color: #fff">Demo</h1>
+          </section>
+        </section>
+
+        <section data-background-color="#fff">
+          <section><h2>REST-Grundprinzipien</h2></section>
+          <section>
+            <h5>Eindeutige Identifikation</h5>
+            <p style="font-size: 20px; font-weight: 400;">
+              Jede Ressource braucht zur Identifikation einen eindeutigen
+              Schlüssel.
+            </p>
+            <code>https://someurl/api/users/<mark>1</mark></code>
+          </section>
+          <section>
+            <h5>Verwendung von HTTP-Standardmethoden</h5>
+            <table>
+              <tr>
+                <td style="font-size: 20px">GET</td>
+                <td><code>https://someurl/api/users</code></td>
+                <td style="font-size: 20px">Alle User lesen</td>
+              </tr>
+              <tr>
+                <td style="font-size: 20px">GET</td>
+                <td>
+                  <code>https://someurl/api/users/<mark>1</mark></code>
+                </td>
+                <td style="font-size: 20px">User 1 lesen</td>
+              </tr>
+              <tr>
+                <td style="font-size: 20px">POST</td>
+                <td><code>https://someurl/api/users</code></td>
+                <td style="font-size: 20px">Neuen User anlegen</td>
+              </tr>
+              <tr>
+                <td style="font-size: 20px">PUT</td>
+                <td>
+                  <code>https://someurl/api/users/<mark>1</mark></code>
+                </td>
+                <td style="font-size: 20px">User 1 updaten</td>
+              </tr>
+              <tr>
+                <td style="font-size: 20px">DELETE</td>
+                <td>
+                  <code>https://someurl/api/users/<mark>1</mark></code>
+                </td>
+                <td style="font-size: 20px">User 1 löschen</td>
+              </tr>
+            </table>
+          </section>
+          <section>
+            <h2>Verwendung von Hypermedia</h2>
+            <p>Verwendung von HTML / HTTP als Basistechnologie</p>
+            <p style="font-size: 20px;">
+              Beispielsweise können Query-String Parameter mitgegeben werden
+            </p>
+
+            <code>https://someurl/api/users/<mark>?q=gerber</mark></code
+            ><br />
+            <br />
+            <code>https://someurl/api/users/<mark>?limit=10</mark></code
+            ><br /><br />
+            <a target="_blank" href="https://tools.ietf.org/html/rfc2616"
+              >HTTP Standard https://tools.ietf.org/html/rfc2616</a
+            >
+          </section>
+          <section>
+            <h2>Unterschiedliche Repräsentationen von Ressourcen</h2>
+            <p style="font-size: 20px; font-weight: 400;">
+              Resultate beispielsweise als XML oder häufiger als JSON
+            </p>
+            <span style="font-size: 20px">Accept</span>
+            <code>application/json</code><br /><br />
+            <span style="font-size: 20px">Accept</span>
+            <code>application/xml</code>
+          </section>
+          <section data-background-color="#a0406c">
+            <h2 style="color:#fff">Vertiefung</h2>
+            <a
+              style="color:#fff; font-size: 64px; font-weight: 400;"
+              target="_blank"
+              href="https://bit.ly/3aP9hnv"
+              >https://bit.ly/3aP9hnv</a
+            >
+            <a
+              style="color:#fff; font-size: 64px; font-weight: 400;"
+              target="_blank"
+              href="https://bit.ly/3aP9hnv"
+              >https://bit.ly/3aLMnNQ</a
+            >
+          </section>
+          <section>
+            <h2>Status Codes</h2>
+            <p style="font-size: 20px; font-weight: 400;">
+              Jeder HTTP Request an den Server wird mit einem StatusCode
+              retourniert
+            </p>
+            <ul>
+              <li>200 — Successful 2xx</li>
+              <li>300 — Redirection 3xx</li>
+              <li>400 — Client Error 4xx</li>
+              <li>500 — Server Error 5xx</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Wichtige Status Codes</h2>
+            <p style="font-size: 20px; font-weight: 400;">
+              Diese solltet ihr kennen
+            </p>
+            <ul>
+              <li>200 — OK</li>
+              <li>201 — Created</li>
+              <li>204 — No Content</li>
+              <li>301 — Moved Permanently</li>
+              <li>302 — Found</li>
+              <li>400 — Bad Request</li>
+              <li>401 — Unauthorized</li>
+              <li>403 — Forbidden</li>
+              <li>404 — Not found</li>
+              <li>409 — Conflict</li>
+              <li>500 — Internal Server Error</li>
+            </ul>
+          </section>
+        </section>
+
+        <section data-background-color="#fff">
+          <section><h2>ASP.Net Core</h2></section>
+          <section>
+            <h3>Request — Response</h3>
+            <img width="550" data-src="assets\Web Requests.png" />
+          </section>
+          <section>
+            <h3>Middleware</h3>
+            <img width="550" data-src="assets\Middleware.png" />
+          </section>
+          <section>
+            <h3>Startup revised</h3>
+            <img width="650" data-src="assets\Startup.png" /><br /><br />
+            <a
+              style="font-size:20px"
+              target="_blank"
+              href="https://github.com/dotnet/aspnetcore/blob/1480b998660d2f77d0605376eefab6a83474ce07/src/DefaultBuilder/src/WebHost.cs#L155"
+              >Source Code</a
+            >
+          </section>
+          <section>
+            <h3>Routing</h3>
+            <p style="font-size: 14px">
+              In der Startup.cs Datei wird die Reihenfolge der Middleware
+              festgelegt.
+            </p>
+            <img width="550" data-src="assets\Configure.png" />
+            <p style="font-size: 14px">
+              Die Aufrufe app.UseRouting() und app.UseEndpoints definieren, wie
+              anhand einer URL der richtige Controller gemappt wird.
+            </p>
+          </section>
+          <section>
+            <h3>Controller</h3>
+            <p style="font-size: 14px">
+              Über das Attribute [Route("api/users")] wird die Base Url des
+              Controller festgelegt.
+            </p>
+            <img width="550" data-src="assets\Controller.png" />
+            <p style="font-size: 14px">
+              Über die Attribute der Methoden wird festgelegt, welche HTTP
+              Methoden unter welcher Url gesendet werden können.
+            </p>
+          </section>
+          <section>
+            <h3>Model Binding</h3>
+            <img width="520" data-src="assets\Binding.png" />
+          </section>
+        </section>
+
+        <section data-background-color="#fff">
+          <section>
+            <img data-src="assets\Postman.png" />
+          </section>
+          <section data-background-color="#ff6c37">
+            <h1 style="color: #fff">Demo</h1>
+          </section>
+        </section>
+
+        <section data-background-color="#fff">
+          <section><h2>Formulare mit Multiple Page Applications</h2></section>
+          <section>
+            <h2>Formular mit POST</h2>
+            <pre class="hljs"><code class="hljs" data-trim >
+&lt;form action=&quot;https://www.foo.com&quot; method=&quot;POST&quot;&gt;
+
+    &lt;label for=&quot;say&quot;&gt;What greeting do you want to say?&lt;/label&gt;
+    &lt;input name=&quot;say&quot; id=&quot;say&quot; value=&quot;Hi&quot;&gt;
+
+    &lt;label for=&quot;to&quot;&gt;Who do you want to say it to?&lt;/label&gt;
+    &lt;input name=&quot;to&quot; id=&quot;to&quot; value=&quot;Mom&quot;&gt;
+
+    &lt;button&gt;Send my greetings&lt;/button&gt;
+&lt;/form&gt;
+                        </code></pre>
+          </section>
+          <section>
+            <h2>Request Body</h2>
+            <pre class="hljs"><code class="hljs" data-trim >
+POST / HTTP/2.0
+Host: foo.com
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 13
+
+say=Hi&to=Mom
+                        </code></pre>
+            <a
+              style="font-size: 20px"
+              href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml5_input_formenctype"
+              target="_blank"
+              >Sample</a
+            >
+          </section>
+          <section>
+            <h2>Formular mit GET</h2>
+            <pre class="hljs"><code class="hljs" data-trim >
+&lt;form action=&quot;https://www.foo.com&quot; method=&quot;GET&quot;&gt;
+
+    &lt;label for=&quot;say&quot;&gt;What greeting do you want to say?&lt;/label&gt;
+    &lt;input name=&quot;say&quot; id=&quot;say&quot; value=&quot;Hi&quot;&gt;
+
+    &lt;label for=&quot;to&quot;&gt;Who do you want to say it to?&lt;/label&gt;
+    &lt;input name=&quot;to&quot; id=&quot;to&quot; value=&quot;Mom&quot;&gt;
+
+    &lt;button&gt;Send my greetings&lt;/button&gt;
+&lt;/form&gt;
+                        </code></pre>
+          </section>
+          <section>
+            <h2>Request Query-String</h2>
+            <pre class="hljs"><code class="hljs" data-trim >
+www.foo.com/?say=Hi&to=Mom
+                        </code></pre>
+            <a
+              style="font-size: 20px"
+              href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_form_get"
+              target="_blank"
+              >Sample</a
+            >
+          </section>
+          <section>
+            <h2>Wann verwende ich GET?</h2>
+            <p style="font-size: 24px">
+              Wenn kein <mark>method</mark> Attribut angegeben wird, wird
+              standardmässig GET verwendet
+            </p>
+            <ul style="font-size: 20px">
+              <li>Fügt Werte als Query-String (Name-Value-Pairs) an</li>
+              <li>Länge des Query-Strings ist beschränkt (2048 Zeichen)</li>
+              <li>
+                Sollte nicht für sensitive Daten verwendet werden (Ist in der
+                URL sichtbar)
+              </li>
+              <li>
+                Nützlich wenn eine Form Submission als Favorit gespeichert
+                werden will (Z. Bsp. Google Suche)
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h2>Wann verwende ich POST?</h2>
+            <p style="font-size: 24px">
+              <mark>Immer</mark>, wenn sensitive Daten übertragen werden müssen.
+            </p>
+            <ul style="font-size: 20px">
+              <li>
+                POST hat keine Grössenbeschränkungen und kann zum Senden grosser
+                Datenmengen verwendet werden.
+              </li>
+              <li>Kann nicht als Favorit (Bookmark) verwendet werden</li>
+            </ul>
+          </section>
+        </section>
+      </div>
+    </div>
+
+    <script src="js/reveal.js"></script>
+
+    <script>
+      // More info about config & dependencies:
+      // - https://github.com/hakimel/reveal.js#configuration
+      // - https://github.com/hakimel/reveal.js#dependencies
+      Reveal.initialize({
+        hash: true,
+        dependencies: [
+          { src: 'plugin/markdown/marked.js' },
+          { src: 'plugin/markdown/markdown.js' },
+          { src: 'plugin/highlight/highlight.js' },
+          { src: 'plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+  </body>
+</html>
