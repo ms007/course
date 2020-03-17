@@ -107,8 +107,8 @@
           <section>
             <h2>Neues Web API Projekt erstellen</h2>
             <br />
-            <code>md Test</code><br /><br />
-            <code>cd Test</code><br /><br />
+            <code>md ToDoApi</code><br /><br />
+            <code>cd ToDoApi</code><br /><br />
             <code>dotnet new webapi -n &lt;Name der App&gt;</code><br />
             <a
               style="font-size: 14px"
@@ -146,8 +146,7 @@
           <section>
             <h5>Eindeutige Identifikation</h5>
             <p style="font-size: 20px; font-weight: 400;">
-              Jede Ressource braucht zur Identifikation einen eindeutigen
-              Schlüssel.
+              Jede Ressource braucht zur Identifikation einen eindeutigen Schlüssel.
             </p>
             <code>https://someurl/api/users/<mark>1</mark></code>
           </section>
@@ -213,26 +212,10 @@
             <span style="font-size: 20px">Accept</span>
             <code>application/xml</code>
           </section>
-          <section data-background-color="#a0406c">
-            <h2 style="color:#fff">Vertiefung</h2>
-            <a
-              style="color:#fff; font-size: 64px; font-weight: 400;"
-              target="_blank"
-              href="https://bit.ly/3aP9hnv"
-              >https://bit.ly/3aP9hnv</a
-            >
-            <a
-              style="color:#fff; font-size: 64px; font-weight: 400;"
-              target="_blank"
-              href="https://bit.ly/3aP9hnv"
-              >https://bit.ly/3aLMnNQ</a
-            >
-          </section>
           <section>
             <h2>Status Codes</h2>
             <p style="font-size: 20px; font-weight: 400;">
-              Jeder HTTP Request an den Server wird mit einem StatusCode
-              retourniert
+              Jeder HTTP Request an den Server wird mit einem StatusCode retourniert
             </p>
             <ul>
               <li>200 — Successful 2xx</li>
@@ -240,6 +223,10 @@
               <li>400 — Client Error 4xx</li>
               <li>500 — Server Error 5xx</li>
             </ul>
+            <br /><br />
+            <a style="font-size: 20px" target="_blank" href="https://tools.ietf.org/html/rfc2616"
+              >HTTP Standard https://tools.ietf.org/html/rfc2616</a
+            >
           </section>
           <section>
             <h2>Wichtige Status Codes</h2>
@@ -259,6 +246,21 @@
               <li>409 — Conflict</li>
               <li>500 — Internal Server Error</li>
             </ul>
+          </section>
+          <section data-background-color="#a0406c">
+            <h2 style="color:#fff">Vertiefung</h2>
+            <a
+              style="color:#fff; font-size: 64px; font-weight: 400;"
+              target="_blank"
+              href="https://bit.ly/3aP9hnv"
+              >https://bit.ly/3aP9hnv</a
+            >
+            <a
+              style="color:#fff; font-size: 64px; font-weight: 400;"
+              target="_blank"
+              href="https://bit.ly/3aP9hnv"
+              >https://bit.ly/3aLMnNQ</a
+            >
           </section>
         </section>
 
@@ -285,25 +287,23 @@
           <section>
             <h3>Routing</h3>
             <p style="font-size: 14px">
-              In der Startup.cs Datei wird die Reihenfolge der Middleware
-              festgelegt.
+              In der Startup.cs Datei wird die Reihenfolge der Middleware festgelegt.
             </p>
             <img width="550" data-src="assets\Configure.png" />
             <p style="font-size: 14px">
-              Die Aufrufe app.UseRouting() und app.UseEndpoints definieren, wie
-              anhand einer URL der richtige Controller gemappt wird.
+              Die Aufrufe app.UseRouting() und app.UseEndpoints definieren, wie anhand einer URL der
+              richtige Controller gemappt wird.
             </p>
           </section>
           <section>
             <h3>Controller</h3>
             <p style="font-size: 14px">
-              Über das Attribute [Route("api/users")] wird die Base Url des
-              Controller festgelegt.
+              Über das Attribute [Route("api/users")] wird die Base Url des Controller festgelegt.
             </p>
             <img width="550" data-src="assets\Controller.png" />
             <p style="font-size: 14px">
-              Über die Attribute der Methoden wird festgelegt, welche HTTP
-              Methoden unter welcher Url gesendet werden können.
+              Über die Attribute der Methoden wird festgelegt, welche HTTP Methoden unter welcher
+              Url gesendet werden können.
             </p>
           </section>
           <section>
@@ -322,97 +322,9 @@
         </section>
 
         <section data-background-color="#fff">
-          <section><h2>Formulare mit Multiple Page Applications</h2></section>
+          <section><h2>Swagger</h2></section>
           <section>
-            <h2>Formular mit POST</h2>
-            <pre class="hljs"><code class="hljs" data-trim >
-&lt;form action=&quot;https://www.foo.com&quot; method=&quot;POST&quot;&gt;
-
-    &lt;label for=&quot;say&quot;&gt;What greeting do you want to say?&lt;/label&gt;
-    &lt;input name=&quot;say&quot; id=&quot;say&quot; value=&quot;Hi&quot;&gt;
-
-    &lt;label for=&quot;to&quot;&gt;Who do you want to say it to?&lt;/label&gt;
-    &lt;input name=&quot;to&quot; id=&quot;to&quot; value=&quot;Mom&quot;&gt;
-
-    &lt;button&gt;Send my greetings&lt;/button&gt;
-&lt;/form&gt;
-                        </code></pre>
-          </section>
-          <section>
-            <h2>Request Body</h2>
-            <pre class="hljs"><code class="hljs" data-trim >
-POST / HTTP/2.0
-Host: foo.com
-Content-Type: application/x-www-form-urlencoded
-Content-Length: 13
-
-say=Hi&to=Mom
-                        </code></pre>
-            <a
-              style="font-size: 20px"
-              href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml5_input_formenctype"
-              target="_blank"
-              >Sample</a
-            >
-          </section>
-          <section>
-            <h2>Formular mit GET</h2>
-            <pre class="hljs"><code class="hljs" data-trim >
-&lt;form action=&quot;https://www.foo.com&quot; method=&quot;GET&quot;&gt;
-
-    &lt;label for=&quot;say&quot;&gt;What greeting do you want to say?&lt;/label&gt;
-    &lt;input name=&quot;say&quot; id=&quot;say&quot; value=&quot;Hi&quot;&gt;
-
-    &lt;label for=&quot;to&quot;&gt;Who do you want to say it to?&lt;/label&gt;
-    &lt;input name=&quot;to&quot; id=&quot;to&quot; value=&quot;Mom&quot;&gt;
-
-    &lt;button&gt;Send my greetings&lt;/button&gt;
-&lt;/form&gt;
-                        </code></pre>
-          </section>
-          <section>
-            <h2>Request Query-String</h2>
-            <pre class="hljs"><code class="hljs" data-trim >
-www.foo.com/?say=Hi&to=Mom
-                        </code></pre>
-            <a
-              style="font-size: 20px"
-              href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_form_get"
-              target="_blank"
-              >Sample</a
-            >
-          </section>
-          <section>
-            <h2>Wann verwende ich GET?</h2>
-            <p style="font-size: 24px">
-              Wenn kein <mark>method</mark> Attribut angegeben wird, wird
-              standardmässig GET verwendet
-            </p>
-            <ul style="font-size: 20px">
-              <li>Fügt Werte als Query-String (Name-Value-Pairs) an</li>
-              <li>Länge des Query-Strings ist beschränkt (2048 Zeichen)</li>
-              <li>
-                Sollte nicht für sensitive Daten verwendet werden (Ist in der
-                URL sichtbar)
-              </li>
-              <li>
-                Nützlich wenn eine Form Submission als Favorit gespeichert
-                werden will (Z. Bsp. Google Suche)
-              </li>
-            </ul>
-          </section>
-          <section>
-            <h2>Wann verwende ich POST?</h2>
-            <p style="font-size: 24px">
-              <mark>Immer</mark>, wenn sensitive Daten übertragen werden müssen.
-            </p>
-            <ul style="font-size: 20px">
-              <li>
-                POST hat keine Grössenbeschränkungen und kann zum Senden grosser
-                Datenmengen verwendet werden.
-              </li>
-              <li>Kann nicht als Favorit (Bookmark) verwendet werden</li>
-            </ul>
+            <img width="870" data-src="assets\swaggerUI.png" />
           </section>
         </section>
       </div>

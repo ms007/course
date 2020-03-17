@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>Backend</title>
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700|Merriweather:900|Oxygen+Mono|Oxygen:400,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/reveal.css" />
+    <link rel="stylesheet" href="css/theme/default.css" />
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/monokai.css" />
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match(/print-pdf/gi)
+        ? 'css/print/pdf.css'
+        : 'css/print/paper.css';
+      document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+    <script src="http://localhost:35729/livereload.js"></script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h1>Formulare</h1>
+        </section>
+
+        <section data-background-color="#fff">
+          <section><h2>Formulare mit Multiple Page Applications</h2></section>
+          <section>
+            <h2>Formular mit POST</h2>
+            <pre class="hljs"><code class="hljs" data-trim >
+&lt;form action=&quot;https://www.foo.com&quot; method=&quot;POST&quot;&gt;
+
+    &lt;label for=&quot;say&quot;&gt;What greeting do you want to say?&lt;/label&gt;
+    &lt;input name=&quot;say&quot; id=&quot;say&quot; value=&quot;Hi&quot;&gt;
+
+    &lt;label for=&quot;to&quot;&gt;Who do you want to say it to?&lt;/label&gt;
+    &lt;input name=&quot;to&quot; id=&quot;to&quot; value=&quot;Mom&quot;&gt;
+
+    &lt;button&gt;Send my greetings&lt;/button&gt;
+&lt;/form&gt;
+                        </code></pre>
+          </section>
+          <section>
+            <h2>Request Body</h2>
+            <pre class="hljs"><code class="hljs" data-trim >
+POST / HTTP/2.0
+Host: foo.com
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 13
+
+say=Hi&to=Mom
+                        </code></pre>
+            <a
+              style="font-size: 20px"
+              href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml5_input_formenctype"
+              target="_blank"
+              >Sample</a
+            >
+          </section>
+          <section>
+            <h2>Formular mit GET</h2>
+            <pre class="hljs"><code class="hljs" data-trim >
+&lt;form action=&quot;https://www.foo.com&quot; method=&quot;GET&quot;&gt;
+
+    &lt;label for=&quot;say&quot;&gt;What greeting do you want to say?&lt;/label&gt;
+    &lt;input name=&quot;say&quot; id=&quot;say&quot; value=&quot;Hi&quot;&gt;
+
+    &lt;label for=&quot;to&quot;&gt;Who do you want to say it to?&lt;/label&gt;
+    &lt;input name=&quot;to&quot; id=&quot;to&quot; value=&quot;Mom&quot;&gt;
+
+    &lt;button&gt;Send my greetings&lt;/button&gt;
+&lt;/form&gt;
+                        </code></pre>
+          </section>
+          <section>
+            <h2>Request Query-String</h2>
+            <pre class="hljs"><code class="hljs" data-trim >
+www.foo.com/?say=Hi&to=Mom
+                        </code></pre>
+            <a
+              style="font-size: 20px"
+              href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_form_get"
+              target="_blank"
+              >Sample</a
+            >
+          </section>
+          <section>
+            <h2>Wann verwende ich GET?</h2>
+            <p style="font-size: 24px">
+              Wenn kein <mark>method</mark> Attribut angegeben wird, wird standardmässig GET
+              verwendet
+            </p>
+            <ul style="font-size: 20px">
+              <li>Fügt Werte als Query-String (Name-Value-Pairs) an</li>
+              <li>Länge des Query-Strings ist beschränkt (2048 Zeichen)</li>
+              <li>
+                Sollte nicht für sensitive Daten verwendet werden (Ist in der URL sichtbar)
+              </li>
+              <li>
+                Nützlich wenn eine Form Submission als Favorit gespeichert werden will (Z. Bsp.
+                Google Suche)
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h2>Wann verwende ich POST?</h2>
+            <p style="font-size: 24px">
+              <mark>Immer</mark>, wenn sensitive Daten übertragen werden müssen.
+            </p>
+            <ul style="font-size: 20px">
+              <li>
+                POST hat keine Grössenbeschränkungen und kann zum Senden grosser Datenmengen
+                verwendet werden.
+              </li>
+              <li>Kann nicht als Favorit (Bookmark) verwendet werden</li>
+            </ul>
+          </section>
+        </section>
+      </div>
+    </div>
+
+    <script src="js/reveal.js"></script>
+
+    <script>
+      // More info about config & dependencies:
+      // - https://github.com/hakimel/reveal.js#configuration
+      // - https://github.com/hakimel/reveal.js#dependencies
+      Reveal.initialize({
+        hash: true,
+        dependencies: [
+          { src: 'plugin/markdown/marked.js' },
+          { src: 'plugin/markdown/markdown.js' },
+          { src: 'plugin/highlight/highlight.js' },
+          { src: 'plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+  </body>
+</html>
