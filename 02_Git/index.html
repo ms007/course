@@ -35,26 +35,26 @@
   <body>
     <div class="reveal">
       <div class="slides">
-        <section>
+        <section data-background-color="#222">
           <h1>git - the simple guide</h1>
         </section>
 
         <section data-background-color="#fff">
-          <section><h2>Was ist git?</h2></section>
-          <section>
+          <section data-background-color="#fff"><h2>Was ist git?</h2></section>
+          <section data-background-color="#fff">
             <img width="420" data-src="assets\whatisgit.gif" />
           </section>
-          <section>
+          <section data-background-color="#fff">
             <h2>Versionsverwaltung</h2>
             <img width="420" data-src="assets\gitbasic.png" />
           </section>
-          <section>
+          <section data-background-color="#fff">
             <img data-src="assets\allcommands.png" />
           </section>
         </section>
 
         <section data-background-color="#fff">
-          <section>
+          <section data-background-color="#fff">
             <h2>First things first</h2>
             <div>Git personalisieren</div>
             <pre style="background-color: #fff">git config --global user.name "Your Name"</pre>
@@ -63,13 +63,13 @@
         </section>
 
         <section data-background-color="#06406c">
-          <section>
+          <section data-background-color="#06406c">
             <h2>Neues Repository erstellen</h2>
             <div>erstelle ein neues Verzeichnis, öffne es und führe</div>
             <pre>git init</pre>
             <div style="margin-top: 10px">aus, um ein neues git-Repository anzulegen.</div>
           </section>
-          <section>
+          <section data-background-color="#06406c">
             <h2>Ein Repository auschecken</h2>
             <div>Erstelle eine Arbeitskopie, indem du folgenden Befehl ausführst:</div>
             <pre>git clone /pfad/zum/repository</pre>
@@ -77,7 +77,7 @@
         </section>
 
         <section data-background-color="#4c0d09">
-          <section>
+          <section data-background-color="#4c0d09">
             <h2 style="color: #d3b2af">Workflow</h2>
             <p style="color: #d3b2af; line-height: 50px;">
               Dein lokales Repository besteht aus drei "Instanzen", die von git verwaltet werden.
@@ -88,13 +88,13 @@
             </p>
             <img class="plain" width="700" data-src="assets\trees.png" />
           </section>
-          <section>
+          <section data-background-color="#4c0d09">
             <img class="plain" width="700" data-src="assets\areas.png" />
           </section>
         </section>
 
         <section data-background-color="#cc4037">
-          <section>
+          <section data-background-color="#cc4037">
             <h2 style="color: #4c0d09">add & commit</h2>
             <p style="color: #4c0d09; line-height: 50px;">
               Du kannst Änderungen vorschlagen (zum <b>Index</b> hinzufügen) mit<br />
@@ -109,7 +109,7 @@
         </section>
 
         <section data-background-color="#ffc19f">
-          <section>
+          <section data-background-color="#ffc19f">
             <h2 style="color: #cc4037">Änderungen hochladen</h2>
             <p style="line-height: 50px;">
               Die Änderungen sind jetzt im <b>HEAD</b> deines lokalen Repositories. Um die
@@ -119,7 +119,7 @@
               über Branches erfährst du später.
             </p>
           </section>
-          <section>
+          <section data-background-color="#ffc19f">
             <h2 style="color: #cc4037">Änderungen hochladen</h2>
             <p style="line-height: 50px;">
               Wenn du dein lokales Repository nicht von einem entfernten geklont hast oder mit einem
@@ -131,7 +131,7 @@
         </section>
 
         <section data-background-color="#000">
-          <section>
+          <section data-background-color="#000">
             <h2>Branches</h2>
             Branches werden benutzt, um verschiedene Funktionen isoliert voneinander zu entwickeln.
             Der master-Branch ist der "Standard"-Branch, wenn du ein neues Repository erstellst. Du
@@ -139,7 +139,7 @@
             Master-Branch zusammenführen (mergen). Auch das lernst du später.
             <img class="plain" width="700" data-src="assets\branches.png" />
           </section>
-          <section>
+          <section data-background-color="#000">
             <p style="line-height: 50px;">
               Erstelle einen neuen Branch mit dem Namen "feature/xyz" und wechsle zu diesem:<br />
               <code class="white">git checkout -b feature/xyz</code><br />
@@ -155,7 +155,7 @@
         </section>
 
         <section data-background-color="#348fd4">
-          <section>
+          <section data-background-color="#348fd4">
             <h2 style="color: #06406c;">Tagging</h2>
             <p style="line-height: 50px">
               Es wird empfohlen, für Software Releasestags zu verwenden. Du kannst einen neuen Tag
@@ -165,7 +165,7 @@
               <code>git tag 1.0.0</code>
             </p>
           </section>
-          <section>
+          <section data-background-color="#348fd4">
             <h2 style="color: #06406c;">Tags synchronisieren</h2>
             <p style="line-height: 50px">
               Tags werden nicht automatisch zu einem Remote transferiert. Das erreicht man mit
@@ -179,7 +179,7 @@
         </section>
 
         <section data-background-color="#fff">
-          <section>
+          <section data-background-color="#fff">
             <h2 style="color: #666">Update & Merge</h2>
             <p style="line-height: 50px;">
               Um dein lokales Repository mit den neuesten Änderungen zu aktualisieren, verwende:<br />
@@ -188,7 +188,7 @@
               deinem Stand zusammenzuführen (merge).
             </p>
           </section>
-          <section>
+          <section data-background-color="#fff">
             <p style="line-height: 50px;">
               Wenn du einen anderen Branch mit deinem aktuellen (z.B. master) zusammenführen willst,
               benutze:<br />
@@ -196,7 +196,7 @@
               In beiden Fällen versucht git die Änderungen automatisch zusammenzuführen.
             </p>
           </section>
-          <section>
+          <section data-background-color="#fff">
             <h2 style="color: #666">Konflikte</h2>
             <p style="line-height: 50px;">
               Unglücklicherweise ist die automatische Zusammenführung nicht immer möglich und endet
@@ -209,7 +209,7 @@
         </section>
 
         <section data-background-color="#fff8c9">
-          <section>
+          <section data-background-color="#fff8c9">
             <h2 style="color: #2d2700">Änderungen rückgängig machen</h2>
             <p style="line-height: 50px; color: #463d02">
               Falls du mal etwas falsch machst (was natürlich nie passiert ;) kannst du die lokalen
@@ -219,7 +219,7 @@
               hinzugefügt hast, bleiben bestehen.
             </p>
           </section>
-          <section>
+          <section data-background-color="#fff8c9">
             <h2 style="color: #2d2700">Änderungen rückgängig machen</h2>
             <p style="line-height: 50px; color: #463d02">
               Wenn du aber deine lokalen Änderungen komplett entfernen möchtest, kannst du mit dem

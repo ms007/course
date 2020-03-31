@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>Backend</title>
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700|Merriweather:900|Oxygen+Mono|Oxygen:400,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/reveal.css" />
+    <link rel="stylesheet" href="css/theme/default.css" />
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/monokai.css" />
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match(/print-pdf/gi)
+        ? 'css/print/pdf.css'
+        : 'css/print/paper.css';
+      document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+    <script src="http://localhost:35729/livereload.js"></script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h1>Security</h1>
+        </section>
+
+        <section>
+          <section><h2>OWASP Top 10</h2></section>
+          <section>
+            <h5>
+              <mark>O</mark>pen <mark>W</mark>eb <mark>A</mark>pplication <mark>S</mark>ecurity
+              <mark>P</mark>roject
+            </h5>
+            <ul>
+              <li>Offene Community</li>
+              <li>Non-profit Organisation (unabhängig)</li>
+              <li>Gremium</li>
+            </ul>
+            <br /><br />
+            <code class="white" style="font-size:24px"
+              >The Ten Most Critical Web Application Security Risks</code
+            >
+            <aside class="notes">
+              <ul>
+                <li>
+                  OWASP ist gemeinnützige Organisation, die Softwaresicherheit sichtbarer machen
+                  will.
+                </li>
+                <li>Jeder kann Beiträge leisten.</li>
+                <li>Projekt ermittelt die 10 kritischsten Risiken</li>
+              </ul>
+            </aside>
+          </section>
+
+          <section>
+            <h2>OWASP Top 10</h2>
+            <p>Wie werden die Sicherheitsrisiken ermittelt?</p>
+            <img src="assets/RiskRating.jpg" />
+            <h6>Risk Rating</h6>
+            <ul style="font-size: 24px;">
+              <li>Wie leicht die Lücke auszunutzen ist (Exploitability)</li>
+              <li>Wie verbreitet ist die Gefahr (Prevalence)</li>
+              <li>Wie einfach sie zu entdecken ist (Weakness Detectability)</li>
+            </ul>
+            <br />
+            <code class="white" style="font-size:20px"
+              >Berechnung Schadeneintrittswahrscheinlichkeit mit dem Schadenausmass</code
+            ><br />
+            <a
+              style="font-size: 18px;"
+              href="https://www.owasp.org/images/9/90/OWASP_Top_10-2017_de_V1.0.pdf"
+              >OWASP Top 10 (Deutsch)</a
+            >
+
+            <aside class="notes">
+              <ul>
+                <li>Aufruf an Hersteller und Institutionen, ihre Scan-Ergebnisse einzusenden</li>
+                <li>Auswertung der Daten</li>
+                <li>Einordnen der Ergebniss (Risk Rating)</li>
+              </ul>
+            </aside>
+          </section>
+          <section>
+            <h2>OWASP Top 10 (2017)</h2>
+            <img src="assets/ListTop10.jpg" />
+            <aside class="notes">
+              <ul>
+                <li>Warum 2017? 2013 -> 2010</li>
+                <li>Auswertung der Daten benötigt Zeit</li>
+                <li>
+                  Die grosse Zeitspanne hilft aufzuzeigen, wie sich die Verbreitung der
+                  Schwachstellen im Laufe der Zeit dynamisch entwickelt
+                </li>
+              </ul>
+            </aside>
+          </section>
+          <section>
+            <h2>Injection</h2>
+            <img src="assets/Injection.jpg" />
+          </section>
+          <section>
+            <h2>Injection</h2>
+            <h5>Was ist es?</h5>
+            <p style="font-size: 30px;">
+              Eine Injektionsanfälligkeit liegt vor, wenn ein Angreifer bösartige Daten als Teil
+              eines Befehls oder einer Abfrage an einen Interpreter sendet.
+            </p>
+            <p style="font-size: 30px;">
+              Bei Erfolg wird diese böswillige Eingabe als Code ausgeführt, was den Interpreter
+              veranlasst, unbeabsichtigte Befehle auszuführen oder Daten zu offenbaren, auf die
+              sonst nicht zugegriffen werden könnte.
+            </p>
+            <aside class="notes">
+              <ul>
+                <li>Bösartiger Daten werden eingeschleust</li>
+              </ul>
+            </aside>
+          </section>
+          <section>
+            <h2>Injection</h2>
+            <p>Eine Anwendung ist für diesen Angriff verwundbar, wenn:</p>
+            <ul style="font-size: 20px;">
+              <li>
+                Daten, die vom Nutzer stammen, nicht ausreichend validiert, gefiltert oder durch
+                geeignete Sanitizer-Funktionen laufen
+              </li>
+              <li>
+                Nicht-parametrisierte Aufrufe (bspw. SQL, LDAP, XML usw.) ohne Escaping direkt einem
+                Interpreter übergeben werden.
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h2>Injection</h2>
+            <h5>Wann tritt es auf?</h5>
+            <p style="font-size: 30px;">
+              Letztendlich resultiert die häufigste Ursache für Injektionsschwachstellen aus dem
+              Versäumnis einer Website, die Eingaben eines Benutzers zu filtern, zu validieren oder
+              zu säubern (Sanitazing).
+            </p>
+            <aside class="notes">
+              <ul>
+                <li>
+                  Die validieren von Benutzereingaben ist erforderlich, damit die Anwendung wie
+                  beabsichtigt funktioniert.
+                </li>
+                <li>
+                  Es wird immer böswillige Benutzer geben, die versuchen, diese Realität
+                  auszunutzen, indem sie unerwartete oder unbeabsichtigte Daten senden.
+                </li>
+              </ul>
+            </aside>
+          </section>
+          <section>
+            <h2>Injection</h2>
+            <h5>Wann tritt es auf?</h5>
+            <img src="assets/Car.jpg" />
+          </section>
+          <section>
+            <h2>Injection</h2>
+            <h5>Wie kann es verhindert werden?</h5>
+            <p style="font-size: 30px;">
+              Nutzung von parametrisierten Queries
+            </p>
+            <pre class="hljs"><code class="hljs" data-trim >
+var id;
+id = Request.form ("id");
+
+var sql = "SELECT * FrOM OrdersTable WHERE id = '" + id + "'";
+                                    </code></pre>
+            <pre class="hljs"><code class="hljs" data-trim >
+var id;
+id = Request.form ("id");
+
+SqlCommand command = ...;
+command.CommandText = "SELECT * FrOM OrdersTable WHERE id = @Id;";
+command.Parameters.Add("@Id", SqlDbType.UniqueIdentifier )
+    .Value = id;
+
+                                    </code></pre>
+          </section>
+          <section>
+            <h2>Injection</h2>
+            <h5>Wie kann es verhindert werden?</h5>
+            <p style="font-size: 30px;">
+              Verwendung von ORM's (Object Relation Mapper) wie Entity Framework:
+            </p>
+            <pre class="hljs"><code class="hljs" data-trim >
+var blogs = db.Blogs
+    .Where(b => b.Rating > 3)
+    .OrderBy(b => b.Url)
+    .ToList();
+
+                                                </code></pre>
+          </section>
+          <section>
+            <h2>Injection</h2>
+            <h4>Wie kann es verhindert werden?</h4>
+            <ul style="font-size: 20px;">
+              <li>
+                Blacklisting
+              </li>
+              <li>
+                Whitelisting
+              </li>
+              <li>Encoding</li>
+              <li>Escaping</li>
+              <li>Sanitazing</li>
+            </ul>
+            <aside class="notes">
+              <ul>
+                <li>
+                  Blacklisting: Unerwünschte Daten werden herausgefiltert. Problem: man hinkt immer
+                  hinterher
+                </li>
+                <li>
+                  Whitelisting: Nur erwünschte Werte werden erlaubt. Beispiel: E-Mail Adresse muss
+                  dem korrekten Format entsprechen.
+                </li>
+                <li>
+                  Jeder Interpreter hat einen Parser. Der Parser reagiert auf Befehle. Wenn also der
+                  zu parsende Text Befehle enthält, dann kann der Parser missbraucht werden.
+                </li>
+                <li>https://html-online.com/editor/</li>
+              </ul>
+            </aside>
+          </section>
+          <section>
+            <h2>Broken Authentication</h2>
+            <img
+              src="assets/Broken_Auth.png"
+              style="background:none; border:none; box-shadow:none;"
+            />
+          </section>
+          <section>
+            <h2>Broken Authentication</h2>
+            <h5>Was ist es?</h5>
+            <p style="font-size: 30px;">
+              Alle Schwächen in der Authentifizierung und beim Session Management.
+            </p>
+            <p style="font-size: 30px;">
+              Wenn diese in Webanwendungen schlecht implementiert sind, erhalten Angreifer Zugriff
+              auf Konten und/oder Daten, die sie sonst nicht einsehen dürften.
+            </p>
+            <aside class="notes">
+              <ul>
+                <li>Möglichkeit, die Authentication zu umgehen</li>
+                <li>Möglichkeit, als anderer User eine Anfrage zu stellen</li>
+              </ul>
+            </aside>
+          </section>
+          <section>
+            <h2>Broken Authentication</h2>
+            <h5>Wann tritt es auf?</h5>
+            <ul style="font-size: 20px;">
+              <li>Automatisierte Angriffe (Brute-Force, Credential Stuffing usw.)</li>
+              <li>
+                Seiten die Benutzern erlauben, schwache oder bekannte Passwörter wie password123 zu
+                verwenden.
+              </li>
+              <li>Unveränderte Standardpasswörter</li>
+              <li>Unveränderte Standardpasswörter</li>
+              <li>Funktionen um Zugangsdaten oder Passwörter wiederherzustellen sind schwach</li>
+              <li>
+                Speicherung von Passwörtern im Klartext, verschlüsselt oder mit schwachen Hashes
+              </li>
+              <li>Funktionen um Zugangsdaten oder Passwörter wiederherzustellen sind schwach</li>
+              <li>Session ID exponiert (z. Bsp. in URL)</li>
+            </ul>
+            <aside class="notes">
+              <ul>
+                <li>Credential Stuffing (Verwendung von zuvor gestohlenen Credentials)</li>
+                <li>https://haveibeenpwned.com/</li>
+                <li>https://crackstation.net/</li>
+                <li>https://hashgenerator.de/</li>
+              </ul>
+            </aside>
+          </section>
+          <section>
+            <h2>Broken Authentication</h2>
+            <h5>Wie kann es verhindert werden?</h5>
+            <ul style="font-size: 20px;">
+              <li>Multifaktor-Authentication</li>
+              <li>Keine Standardbenutzer</li>
+              <li>
+                Es sollten Prüfungen zum Verhindern schwacher Passwörter implementiert sein.
+              </li>
+              <li>
+                Die Prüfung der Länge, Komplexität und Häufigkeit des Passwortwechsels.
+              </li>
+              <li>
+                Automatische Durchsuchen nach gültigen Benutzernamen sollte nicht möglich sein.
+              </li>
+              <li>
+                Begrenzen der Gesamtanzahl der Anmeldeversuche oder setze Verzögerungen (Timeouts)
+                ein.
+              </li>
+              <li>Passwörter nie in Plain-Text speichern. Salt und Pepper verwenden.</li>
+              <li>
+                Es sollten serverseitige, sichere und etablierte SessionManager verwendet werden
+              </li>
+              <li>SessionStorage verwenden, Validtime von JW-Tokens begrenzen</li>
+            </ul>
+            <aside class="notes">
+              <ul>
+                <li>Nicht nur etwas wissen, auch etwas haben</li>
+                <li>Gegenprüfung mit Liste der 10000 beliebtesten Passwörter geprüft werden</li>
+                <li>Fehlerhafte Anmeldeversuchen geben immer dieselbe Fehlermeldung zurück</li>
+                <li>
+                  Fehlerhafte Anmeldungen müssen protokolliert und Administratoren informiert
+                  werden, wenn Anomalien oder Angriffe erkannt werden. z.B. 500 Anmeldeversuche in
+                  einer Sekunde
+                </li>
+                <li>Blacklist IPs von welchen Angriffsversuche gestartet wurden.</li>
+              </ul>
+            </aside>
+          </section>
+          <section>
+            <h2>Sensitive Data Exposure</h2>
+            <img
+              src="assets/DataExposer.png"
+              style="background:none; border:none; box-shadow:none;"
+            />
+          </section>
+          <section>
+            <h2>Sensitive Data Exposure</h2>
+            <h5>Was ist es?</h5>
+            <p style="font-size: 30px;">
+              Schwachstelle, wenn eine Webanwendung sensible Daten nicht ausreichend schützt.
+            </p>
+            <p style="font-size: 30px;">
+              Dazu gehören z.Bsp. E-Mail-Adressen, Postadressen, Bankinformationen, Geburtsdaten und
+              Telefonnummern.
+            </p>
+            <aside class="notes">
+              <ul>
+                <li>
+                  Schützenswerte Daten definieren.
+                </li>
+              </ul>
+            </aside>
+          </section>
+          <section>
+            <h2>Sensitive Data Exposure</h2>
+            <h5>Wann tritt es auf?</h5>
+            <ul style="font-size: 20px;">
+              <li>
+                Die Daten werden im Klartext übertragen (über Protokolle wie HTTP, FTP und SMTP).
+              </li>
+              <li>
+                Sensible Daten werden serverseitig im Klartext gespeichert.
+              </li>
+              <li>Keine oder schwache Encryption (MD5 or SHA-1)</li>
+            </ul>
+            <aside class="notes">
+              <ul>
+                <li>Offenes Wi-Fi</li>
+                <li>Mobile Übertragung (Handy-Repeater)</li>
+              </ul>
+            </aside>
+          </section>
+          <section>
+            <h2>Sesitive Data Exposure</h2>
+            <h5>Wie kann es verhindert werden?</h5>
+            <ul style="font-size: 20px;">
+              <li>Schützenswerte Daten definieren.</li>
+              <li>Kein unnötiges Speichern vertraulicher Daten.</li>
+              <li>Verschlüsseltes Speichern von sensitiven Daten.</li>
+              <li>Aktuelle, starke Algorithmen und Schlüssel verwenden</li>
+              <li>Nie einen eigenen Verschlüsselungs-Mechanismus implementieren.</li>
+              <li>Unabhängige Überprüfung der Wirksamkeit der Einstellungen.</li>
+            </ul>
+            <aside class="notes">
+              <ul>
+                <li>
+                  Notiere, wo und wie sie gespeichert sind, sowie ob und wie sie übertragen werden
+                </li>
+              </ul>
+            </aside>
+          </section>
+        </section>
+      </div>
+    </div>
+
+    <script src="js/reveal.js"></script>
+
+    <script>
+      // More info about config & dependencies:
+      // - https://github.com/hakimel/reveal.js#configuration
+      // - https://github.com/hakimel/reveal.js#dependencies
+      Reveal.initialize({
+        hash: true,
+        dependencies: [
+          { src: 'plugin/markdown/marked.js' },
+          { src: 'plugin/markdown/markdown.js' },
+          { src: 'plugin/highlight/highlight.js' },
+          { src: 'plugin/notes/notes.js' }
+        ]
+      });
+    </script>
+  </body>
+</html>
